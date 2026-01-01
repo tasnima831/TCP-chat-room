@@ -11,7 +11,7 @@ server.listen()
 clients = []
 nicknames = []
 
-# ================== Broadcast function ==================
+# Broadcast function 
 def broadcast(message):
     for client in clients:
         try:
@@ -19,7 +19,7 @@ def broadcast(message):
         except:
             pass  # Ignore failed sends
 
-# ================== Private message ==================
+#  Private message 
 def private_message(sender, receiver_name, message):
     if receiver_name in nicknames:
         index = nicknames.index(receiver_name)
@@ -27,7 +27,7 @@ def private_message(sender, receiver_name, message):
     else:
         sender.send("User not found!".encode('ascii'))
 
-# ================== Handle a client ==================
+#  Handle a client 
 def handle(client):
     while True:
         try:
@@ -80,7 +80,7 @@ def handle(client):
                 print(f"[ERROR] {nickname} disconnected unexpectedly: {e}")
             break
 
-# ================== Receive connections ==================
+#  Receive connections 
 def receive():
     print(f"[START] Server started on {host}:{port}")
     print("[INFO] Waiting for clients...\n")
@@ -105,5 +105,6 @@ def receive():
 
         except Exception as e:
             print(f"[ERROR] Failed to accept connection: {e}")
+
 
 receive()
