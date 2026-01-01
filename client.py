@@ -18,7 +18,7 @@ except Exception as e:
 
 running = True
 
-# ================== Receive messages ==================
+#  Receive messages 
 def receive():
     global running
     while running:
@@ -33,7 +33,7 @@ def receive():
                 print("[ERROR] Connection lost!")
             break
 
-# ================== Send messages ==================
+#  Send messages 
 def write():
     global running
     while running:
@@ -55,9 +55,10 @@ def write():
                 print("[ERROR] Failed to send message")
             break
 
-# ================== Start threads ==================
+#  Start threads 
 receive_thread = threading.Thread(target=receive)
 receive_thread.start()
 
 write_thread = threading.Thread(target=write)
+
 write_thread.start()
